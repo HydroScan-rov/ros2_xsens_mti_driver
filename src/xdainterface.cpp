@@ -223,12 +223,12 @@ bool XdaInterface::connectDevice()
     RCLCPP_INFO(get_logger(), "Found port name parameter: %s", portName.c_str());
     mtPort = XsPortInfo(portName, baudrate);
     RCLCPP_INFO(get_logger(), "Scanning port %s ...", portName.c_str());
-    if (!XsScanner::scanPort(mtPort, baudrate) && !XsScanner::scanPort(mtPort, config_baudrate)) {
-      return handleError("No MTi device found. Verify port and baudrate.");
-    }
-    if (checkDeviceID && mtPort.deviceId().toString().c_str() != deviceId) {
-      return handleError("No MTi device found with matching device ID.");
-    }
+    // if (!XsScanner::scanPort(mtPort, baudrate) && !XsScanner::scanPort(mtPort, config_baudrate)) {
+    //   return handleError("No MTi device found. Verify port and baudrate.");
+    // }
+    // if (checkDeviceID && mtPort.deviceId().toString().c_str() != deviceId) {
+    //   return handleError("No MTi device found with matching device ID.");
+    // }
   } else {
     RCLCPP_INFO(get_logger(), "Scanning for devices...");
     XsPortInfoArray portInfoArray = XsScanner::scanPorts(baudrate);
